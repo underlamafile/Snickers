@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 
+
 # Create your views here.
 def index(request):
     return render(request, 'mars/index.html', {
@@ -23,6 +24,11 @@ def index(request):
 def turtle(request):
     return render(request, 'mars/turtle.html', {})
 
+
+def post_list(request):
+    return render(request, 'mars/post_list.html', {})
+
+
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -33,6 +39,5 @@ def register(request):
         else:
             return render(request, 'registration/register.html', {'form': form})
 
-        
     form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
