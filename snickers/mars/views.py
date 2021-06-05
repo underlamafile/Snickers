@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
 from .models import Post
 from django.utils import timezone
+from django.shortcuts import render, get_object_or_404
 
 
 # Create your views here.
@@ -45,3 +46,8 @@ def register(request):
 
     form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
+
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'mars/post_detail.html', {'post': post})
