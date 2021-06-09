@@ -6,28 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CLICKER</title>
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/index.js' %}"></script>
 </head>
 <body>
     <div class='container'>
 
         <aside class="menu-container">
-            <div>hello, {{user.username}}</div>
-            <a href="{% url 'logout' %}">logout</a>
+            <a class="logout" href="{% url 'logout' %}">logout</a>
         </aside>
 
+        <h1 class="hello-user">hello, {{user.username}}</h1>
+
         <div class="click-container">
-            <p class="counter" id="counter">{{maincycle.coins_count}}</p>
             <button class="click-holder" onclick="call_click()">
                 <img id="click-image" src="{% static 'imgs/snickers.jpg' %}" alt="">
             </button>
-            <p id="click_power">{{maincycle.click_power}}</p>
-            <p id="auto_click_power">{{maincycle.auto_click_power}}</p>
-        </div>
 
+        </div>
+        <p class="counter">👀 Количество кликов 👀</p>
+        <p class="counter" id="counter">{{maincycle.coins_count}}</p>
+        <p class="counter"> 😼 Автоклик 😼</p>
+        <p class ="counter" id="auto_click_power">{{maincycle.auto_click_power}}</p>
+        <p class="counter"> 🙏  Сила клика 🙏</p>
+        <p class="counter" id="click_power">{{maincycle.click_power}}</p>
         <div class="boost-container">
-            <h3>Boosts</h3>
+            <h3 class="boost-title">👻 Boosts 👻</h3>
             <div class="boost-holder" id="boost-holder">
                 {% for boost in boosts %}
                     {% if boost.boost_type == 0 %}
