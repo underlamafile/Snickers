@@ -8,9 +8,12 @@ from .serializers import MainCycleSerializer, BoostSerializer
 
 # Create your views here.
 def index(request):
-    user = models.User.objects.get(id=request.user.id)
-    if user == None:
-        return redirect('login')
+    try:
+        user = models.User.objects.get(id=request.user.id)
+    except:
+        form = UserCreationForm(request.POST)
+        return render(request, 'registration/register.html', {'form': form})
+        quit()
 
     maincycle = models.MainCycle.objects.get(user=request.user)
     boosts = models.Boost.objects.filter(main_cycle=maincycle)
@@ -85,3 +88,5 @@ def register(request):
 
     form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
+
+

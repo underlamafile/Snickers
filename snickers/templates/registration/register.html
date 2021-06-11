@@ -6,6 +6,9 @@
     <title>Register</title>
 </head>
 <body>
+    <div>
+        If you have an account: <a href="{% url 'login' %}">login</a>
+    </div>
     <form method='POST' action="{% url 'register' %}">
         {% csrf_token %}
         {{form}}
